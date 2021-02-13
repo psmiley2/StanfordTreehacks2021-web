@@ -1,8 +1,19 @@
+import React from 'react';
+import Sidebar from './Components/Sidebar';
+
+
 function App() {
+ 
+
   return (
     <div>
-      Treehacks 2021
-   </div>
+      <div>
+        Treehacks 2021
+      </div>
+
+      <Sidebar />
+
+    </div>
   );
 }
 
