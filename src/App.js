@@ -1,5 +1,6 @@
 import React from 'react';
 import Sidebar from './Components/Sidebar';
+import SimpleCard from './Components/SimpleCard';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </div>
 
       <Sidebar />
+      <SimpleCard />
 
     </div>
   );

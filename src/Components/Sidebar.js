@@ -92,12 +92,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Sidebar(){
 const classes = useStyles();
 const [open, setOpen] = React.useState(true);
-const handleDrawerOpen = () => {
-  setOpen(true);
-};
-const handleDrawerClose = () => {
-  setOpen(false);
-};
+
 const handleDrawerOpenClose = () => {
     setOpen(!open);
 };
