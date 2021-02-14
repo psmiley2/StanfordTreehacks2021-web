@@ -4,10 +4,12 @@ import { Route, Router, Switch } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import SideBar from './Components/Sidebar';
 import history from "./history";
+import Login from "./Login";
+import Logout from "./Logout";
+import Profile from "./Profile";
 import Register from "./Register";
-function App() {
- 
 
+function App() {
   return (
       <Router history={history}>
         <SideBar />
@@ -15,6 +17,9 @@ function App() {
             <Switch>
                   <Route path="/" exact component={HomePage} />
                   <Route path="/register" exact component={Register} />
+                  <Route path="/login" exact component={Login} />
+                  <Route path="/logout" exact component={Logout} />
+                  <Route path="/profile" exact component={Profile} />
               </Switch>
           </Box>
       </Router>
