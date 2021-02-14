@@ -24,6 +24,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 import Cookies from "universal-cookie";
@@ -31,6 +33,13 @@ import Login from "../Login";
 import Logout from '../Logout';
 
 const drawerWidth = 200;
+const topicOptions = {'1':'Math',
+                      '2':'Music',
+                      '3':'English',
+                      '4': 'Social Studies',
+                      '5': 'Computer Science'};
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -116,13 +125,17 @@ export default function Sidebar() {
   const [open, setOpen] = React.useState(true);
   const [proposalOpen, setproposalOpen] = useState(false);
 
+  // prob combine both of these into an arraystate
   const [newProposalTitle, setNewProposalTitle] = useState("")
   const [newProposalDescription, setNewProposalDescription] = useState("")
 
   const [Topics, setTopics] = React.useState('');
+  const [dropdownOption, setdropdownOption] = useState("");
+  
 
   const handleTopicsChange = (event) => {
     setTopics(event.target.value);
+    console.log("New topic: " + Topics);
 };
 
   const handleAddProposal = () => {
@@ -148,6 +161,15 @@ const handleProposalClose = () => {
     return (<ChevronRightIcon />);
 
   };
+
+  const handleDropdownChange= (event) => {
+      setdropdownOption(event.target.value)
+      //do something with the option picked
+      console.log("You changed the dropdown to: " + dropdownOption);
+
+      //set back to default
+     // setdropdownOption(0);
+  }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const auth = () => {
     const cookies = new Cookies();
@@ -172,6 +194,27 @@ return (
               src={`${process.env.PUBLIC_URL}/assets/logo-32x32.png`}
               alt="logo" />
           </Typography>
+
+
+          {/* Dropdown menu */}
+          <InputLabel id="label"></InputLabel>
+                        <Select
+                            value={dropdownOption}
+                            onChange={handleDropdownChange}
+                        >
+                            <MenuItem value={0}>Communities</MenuItem>
+                            <MenuItem value={1}>Math</MenuItem>
+                            <MenuItem value={2}>Music</MenuItem>
+                            <MenuItem value={3}>English</MenuItem>
+                            <MenuItem value={4}>Social Studies</MenuItem>
+                            <MenuItem value={5}>Computer Science</MenuItem>
+                            <MenuItem value={6}>Electrical Engineering</MenuItem>
+                            <MenuItem value={7}>Art</MenuItem>
+                            <MenuItem value={8}>Philosophy</MenuItem>
+                            <MenuItem value={9}>Science</MenuItem>
+                            <MenuItem value={10}>Chemical Engineering</MenuItem>
+                        </Select>
+
 
           <div>
             <Button onClick={handleProposalOpen} color="secondary">
