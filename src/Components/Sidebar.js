@@ -26,6 +26,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import history from '../history'
 
 
 import Cookies from "universal-cookie";
@@ -33,6 +34,7 @@ import Login from "../Login";
 import Logout from '../Logout';
 
 const drawerWidth = 200;
+//unused
 const topicOptions = {'1':'Math',
                       '2':'Music',
                       '3':'English',
@@ -119,6 +121,15 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  iconContainer: {
+    "&:hover $icon": {
+        color: 'red',
+    }
+},
+icon: {
+    color: 'blue',
+},
+
 }));
 export default function Sidebar() {
   const classes = useStyles();
@@ -165,10 +176,15 @@ const handleProposalClose = () => {
   const handleDropdownChange= (event) => {
       setdropdownOption(event.target.value)
       //do something with the option picked
+      linkToCommunity();
       console.log("You changed the dropdown to: " + dropdownOption);
 
       //set back to default
      // setdropdownOption(0);
+  }
+
+  const linkToCommunity = () =>{
+    history.push("/communities/"+dropdownOption);
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const auth = () => {
@@ -200,7 +216,10 @@ return (
           <InputLabel id="label"></InputLabel>
                         <Select
                             value={dropdownOption}
-                            onChange={handleDropdownChange}
+                            onChange={(e) => {
+                              history.push("/communities/"+e.target.value);
+                              setdropdownOption(e.target.value);
+                            }}
                         >
                             <MenuItem value={0}>Communities</MenuItem>
                             <MenuItem value={1}>Math</MenuItem>
@@ -217,7 +236,7 @@ return (
 
 
           <div>
-            <Button onClick={handleProposalOpen} color="secondary">
+            <Button style={{margin:10}} variant="outlined" onClick={handleProposalOpen} >
               Add A Proposal
 			</Button>
             <Dialog open={proposalOpen} onClose={handleProposalClose}>
@@ -287,14 +306,7 @@ return (
         </div>
 
            
-          <IconButton color = "inherit">
-          <ExitToAppIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+   
           {auth()}
         </Toolbar>
       </AppBar>
