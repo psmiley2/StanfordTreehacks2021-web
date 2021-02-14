@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from 'react';
+import CourseRow from './CourseRow';
+ 
+ 
+ const drawerWidth = 240;
+ 
 export default function HomePage() {
-    return (
-        <div>
-           home page 
-        </div>
-    )
+   return (
+        <>
+            <CourseRow title="Trending Courses" />
+            <CourseRow title="New Courses" />
+            <CourseRow title="Starting Soon" />
+        </>
+   )
 }
