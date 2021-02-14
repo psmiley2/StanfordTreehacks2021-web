@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Proposal({upvotes, title, description, author}) {
+export default function Lecture({upvotes, title, description, author}) {
      const [open, setOpen] = React.useState(false);
      const handleClickOpen = () => {
         setOpen(true);

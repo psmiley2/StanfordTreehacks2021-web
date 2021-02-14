@@ -8,9 +8,9 @@ import Login from "./Login";
 import Logout from "./Logout";
 import CoursePage from "./Pages/CoursePage";
 import MyCourses from './Pages/MyCourses';
+import ProposalForm from './Pages/ProposalForm';
 import Profile from "./Profile";
 import Register from "./Register";
-import ProposalForm from './Pages/ProposalForm';
 
 function App() {
   return (
@@ -25,11 +25,8 @@ function App() {
                     <Route path="/login" exact component={Login} />
                     <Route path="/logout" exact component={Logout} />
                     <Route path="/profile" exact component={Profile} />
-<<<<<<< HEAD
                     <Route path="/proposal-form" exact component={ProposalForm} />
-=======
                     <Route path="/course/:courseID" exact component={CoursePage} />
->>>>>>> fcacb2da1befbc14fce1189bda017f20539b96bf
                 </Switch>
             </Box>
         </Router>

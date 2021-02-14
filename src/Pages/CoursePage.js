@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import React from 'react';
 import Forum from "../Components/Forum";
-import Proposals from "../Components/Proposals";
+import Lectures from "../Components/Lectures";
 
 export default function CoursePage(props) {
     
@@ -12,7 +12,7 @@ export default function CoursePage(props) {
         <Box style={{width:"100%"}}>
             Course Page
             <Box display="flex" flexDirection="row" alignItems="space-around" style={{width: "100%"}}>
-                <Proposals />
+                <Lectures />
                 <Forum />
             </Box>
         </Box>

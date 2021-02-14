@@ -13,8 +13,10 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
 import React from 'react';
+import Cookies from "universal-cookie";
 import { mainListItems, secondaryListItems } from '../listInfo';
-
+import Login from "../Login";
+import Logout from '../Logout';
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
@@ -113,6 +115,18 @@ const changeDirectionIcon = () =>{
 };
 const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+const auth = () => {
+  const cookies = new Cookies();
+  let token = cookies.get("token")
+  if (token.length > 0) {
+    return <Logout />
+  }
+
+  return (
+    <Login />
+  )
+}
+
 return (
    <div> 
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -131,6 +145,7 @@ return (
               <NotificationsIcon />
             </Badge>
           </IconButton>
+          {auth()}
         </Toolbar>
       </AppBar> 
   <Drawer
