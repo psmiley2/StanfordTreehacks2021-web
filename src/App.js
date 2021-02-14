@@ -9,13 +9,14 @@ import Logout from "./Logout";
 import MyCourses from './Pages/MyCourses';
 import Profile from "./Profile";
 import Register from "./Register";
+import ProposalForm from './Pages/ProposalForm';
 
 function App() {
   return (
       <Box display="flex" flexDirection="row">
         <Router history={history}>
             <SideBar />
-            <Box display="flex" flexDirection="row" textAlign="center" justifyContent='center' alignItems='center' style={{paddingTop: 20, height: "100%", width: "100%"}}>
+            <Box display="flex" flexDirection="row" textAlign="center" justifyContent='center' alignItems='center' style={{paddingTop: 60, height: "100%", width: "100%"}}>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/register" exact component={Register} />
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/login" exact component={Login} />
                     <Route path="/logout" exact component={Logout} />
                     <Route path="/profile" exact component={Profile} />
+                    <Route path="/proposal-form" exact component={ProposalForm} />
                 </Switch>
             </Box>
         </Router>

@@ -96,7 +96,6 @@ export default function MyCourses() {
         <div className={classes.root}>
             {/* <HeaderBar /> */}
             <CssBaseline />
-            <Sidebar />
            
             <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
