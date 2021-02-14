@@ -9,7 +9,7 @@ import { backend_url } from "../config";
 export default function CoursePage(props) {
     let id = props.match.params.courseID
     const [course, setcourse] = useState(false)
-    const [user, setuser] = useState({})
+    const [user, setuser] = useState(false)
     const cookies = new Cookies();
     const config = {
         headers: { Authorization: `Bearer ${cookies.get('token')}` }

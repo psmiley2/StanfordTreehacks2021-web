@@ -1,6 +1,5 @@
 import { Dialog } from "@material-ui/core";
 import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -19,21 +18,17 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import axios from "axios";
 import clsx from 'clsx';
 import React, { useState } from "react";
-import { mainListItems, secondaryListItems } from '../listInfo';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-import history from '../history'
-
-
 import Cookies from "universal-cookie";
 import { backend_url } from "../config";
+import history from '../history';
+import { mainListItems, secondaryListItems } from '../listInfo';
 import Login from "../Login";
 import Logout from '../Logout';
+
+
 const drawerWidth = 200;
 //unused
 const topicOptions = {'1':'Math',

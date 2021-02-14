@@ -49,7 +49,7 @@ export default function Lecture({upvotes, title, description, author, courseID, 
   return (
       <div style={{padding: "2%", margin:"2%"}}>
     <Card className={classes.root}>
-         <Typography variant="h7" component="h3">
+         <Typography component="h3">
           <Button variant="contained" color="primary" onClick={handleClickOpen}>{title} </Button> by {author} {" "}
            <Button size="small" onClick={() => handleUpVote()}>Upvote</Button> {upvotes} 
         </Typography>
