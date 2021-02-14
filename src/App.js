@@ -25,11 +25,8 @@ function App() {
                     <Route path="/login" exact component={Login} />
                     <Route path="/logout" exact component={Logout} />
                     <Route path="/profile" exact component={Profile} />
-<<<<<<< HEAD
                     <Route path="/proposal-form" exact component={ProposalForm} />
-=======
                     <Route path="/course/:courseID" exact component={CoursePage} />
->>>>>>> fcacb2da1befbc14fce1189bda017f20539b96bf
                 </Switch>
             </Box>
         </Router>

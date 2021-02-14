@@ -12,8 +12,19 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from "react";
 import { mainListItems, secondaryListItems } from '../listInfo';
+import { Dialog } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 
 const drawerWidth = 200;
@@ -97,61 +108,155 @@ const useStyles = makeStyles((theme) => ({
     height: 240,
   },
 }));
-export default function Sidebar(){
-const classes = useStyles();
-const [open, setOpen] = React.useState(true);
+export default function Sidebar() {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const [proposalOpen, setproposalOpen] = useState(false);
 
-const handleDrawerOpenClose = () => {
+  const [newProposalTitle, setNewProposalTitle] = useState("")
+  const [newProposalDescription, setNewProposalDescription] = useState("")
+
+  const [Topics, setTopics] = React.useState('');
+
+  const handleTopicsChange = (event) => {
+    setTopics(event.target.value);
+};
+
+  const handleAddProposal = () => {
+      console.log("Adding Proposal")
+  }
+const handleProposalClose = () => {
+  setNewProposalDescription("");
+  setNewProposalTitle("");
+  setproposalOpen(false);
+};
+
+	const handleProposalOpen= () => {
+        setproposalOpen(true);
+    }
+
+  const handleDrawerOpenClose = () => {
     setOpen(!open);
-};
-const changeDirectionIcon = () =>{
-    if(open) return(
-        <ChevronLeftIcon/>
+  };
+  const changeDirectionIcon = () => {
+    if (open) return (
+      <ChevronLeftIcon />
     );
-    return (<ChevronRightIcon/>);
-    
-};
-const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    return (<ChevronRightIcon />);
 
-return (
-   <div> 
+  };
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  return (
+    <div>
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
 
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              Educ8 <img className="img-fluid" 
-     src={`${process.env.PUBLIC_URL}/assets/logo-32x32.png`} 
-     alt="logo"/>
+            Educ8 <img className="img-fluid"
+              src={`${process.env.PUBLIC_URL}/assets/logo-32x32.png`}
+              alt="logo" />
           </Typography>
-          <IconButton color = "inherit">
-          <ExitToAppIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+
+          <div>
+            <Button onClick={handleProposalOpen} color="secondary">
+              Add A Proposal
+			</Button>
+            <Dialog open={proposalOpen} onClose={handleProposalClose}>
+              <DialogTitle>Add A Course Proposal</DialogTitle>
+              <DialogContent>
+                <TextField
+                  value={newProposalTitle}
+                  onChange={(e) => setNewProposalTitle(e.target.value)}
+                  margin="dense"
+                  id="proposal-title"
+                  label="New Course Title"
+                  type="text"
+                  fullWidth
+                />
+
+<FormControl className={classes.formControl}>
+                        <InputLabel id="label">Topics</InputLabel>
+                        <Select
+                            value={Topics}
+                            onChange={handleTopicsChange}
+                        >
+                            <MenuItem value={1}>Math</MenuItem>
+                            <MenuItem value={2}>Music</MenuItem>
+                            <MenuItem value={3}>English</MenuItem>
+                            <MenuItem value={4}>Social Studies</MenuItem>
+                            <MenuItem value={5}>Computer Science</MenuItem>
+                            <MenuItem value={6}>Electrical Engineering</MenuItem>
+                            <MenuItem value={7}>Art</MenuItem>
+                            <MenuItem value={8}>Philosophy</MenuItem>
+                            <MenuItem value={9}>Science</MenuItem>
+                            <MenuItem value={10}>Chemical Engineering</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                <TextField
+                  value={newProposalDescription}
+                  onChange={(e) => setNewProposalDescription(e.target.value)}
+                  margin="dense"
+                  id="proposal-description"
+                  label="New Course Description"
+                  multiline
+                            rows={3}
+                            rowsMax={8}
+                            size = "medium"
+                  type="text"
+                  fullWidth
+                />
+              </DialogContent>
+
+              <DialogActions>
+                <Button onClick={handleProposalClose} color="primary">
+                  Cancel
+					</Button>
+                <Button
+                  onClick={() => {
+                    handleAddProposal();
+                    handleProposalClose();
+                  }}
+                  color="secondary"
+                >
+                  Add Proposal
+					</Button>
+              </DialogActions>
+
+              </Dialog>
+
+        </div>
+
+            <IconButton color="inherit">
+              <ExitToAppIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
         </Toolbar>
-      </AppBar> 
-  <Drawer
-  variant="permanent"
-  classes={{
-    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-  }}
-  open={open}
->
- <div className={classes.toolbarIcon}>
- <IconButton onClick={handleDrawerOpenClose}>
-   
-   {changeDirectionIcon()}
-  
- </IconButton>
-</div>
-<Divider />
-<List>{mainListItems}</List>
-<Divider />
-<List>{secondaryListItems}</List>
-</Drawer>
+      </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerOpenClose}>
+
+              {changeDirectionIcon()}
+
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
 </div>
 );
 }
