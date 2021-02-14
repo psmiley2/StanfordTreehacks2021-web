@@ -4,17 +4,31 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import React, { useState } from "react";
-
-export default function AddThread() {
+import Cookies from "universal-cookie";
+import { backend_url } from "../config";
+export default function AddThread({id}) {
 	const [open, setOpen] = useState(false);
 	const handleClickOpen = () => {
         setOpen(true);
     }
     const [newThreadText, setNewThreadText] = useState("")
 
-    const handleAddThread = () => {
-        console.log("Adding Thread")
+    const handleAddThread = async () => {
+		const cookies = new Cookies();
+		const config = {
+			headers: { Authorization: `Bearer ${cookies.get('token')}` }
+		};
+        let body = {
+			text: newThreadText,
+		}
+         await axios.post(`${backend_url}/courses/id/${id}/thread`, body, config )
+        .then((res) => {
+           console.log(res) 
+        }).catch((err) => {
+            console.error(err)
+        })       
     }
 
 	const handleClose = () => {

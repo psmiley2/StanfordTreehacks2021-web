@@ -1,15 +1,12 @@
 import { Box } from '@material-ui/core';
-import React from 'react';
-import Forum from "../Components/Forum";
-import Lectures from "../Components/Lectures";
-import SimpleCard from "../Components/SimpleCard";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/typography';
+import React from 'react';
+import SimpleCard from "../Components/SimpleCard";
 
 export default function CoursePage(props) {
 
     let { courseID } = props.match.params
-    console.log(courseID)
 
     return (
         <Box style={{ width: "100%" }}>
