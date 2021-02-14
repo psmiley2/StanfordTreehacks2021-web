@@ -3,7 +3,7 @@ import React from 'react'
 import AddThread from "./AddThread"
 import Thread from "./Thread"
 
-export default function Forum() {
+export default function Forum({id}) {
     let message = "This is a message about this hackathon! Treehacks2021! Yeah! Snitches get stiches."
     let author = "Pop Smoke"
 
@@ -12,7 +12,7 @@ export default function Forum() {
             <Thread message={message} author={author}/>
             <Thread message={message} author={author}/>
             <Thread message={message} author={author}/>
-            <AddThread/>
+            <AddThread id={id}/>
         </Paper>
     )
 }

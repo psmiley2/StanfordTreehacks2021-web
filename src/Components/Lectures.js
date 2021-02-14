@@ -3,7 +3,7 @@ import React from 'react'
 import AddLecture from './AddLecture'
 import Lecture from "./Lecture"
 
-export default function Lectures() {
+export default function Lectures({id}) {
     let votes = 5
     let title = "Cool Lecture"
     let description = "Description for cool lecture...... End of Description."
@@ -16,7 +16,7 @@ export default function Lectures() {
             <Lecture upvotes={votes} title={title} description={description} author={author}/>
             <Lecture upvotes={votes} title={title} description={description} author={author}/>
             <Lecture upvotes={votes} title={title} description={description} author={author}/>
-            <AddLecture />
+            <AddLecture id={id}/>
         </Paper>
     )
 }

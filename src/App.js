@@ -11,6 +11,7 @@ import MyCourses from './Pages/MyCourses';
 import ProposalForm from './Pages/ProposalForm';
 import Profile from "./Profile";
 import Register from "./Register";
+import CommunityPage from "./Pages/CommunityPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/profile" exact component={Profile} />
                     <Route path="/proposal-form" exact component={ProposalForm} />
                     <Route path="/course/:courseID" exact component={CoursePage} />
+                    <Route path="/communities/:communityID" exact component={CommunityPage} />
                 </Switch>
             </Box>
         </Router>

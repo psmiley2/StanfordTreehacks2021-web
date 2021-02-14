@@ -4,9 +4,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import React, { useState } from "react";
+import Cookies from "universal-cookie";
+import { backend_url } from "../config";
 
-export default function AddLecture() {
+export default function AddLecture({id}) {
 	const [open, setOpen] = useState(false);
 	const handleClickOpen = () => {
         setOpen(true);
@@ -14,15 +17,30 @@ export default function AddLecture() {
     const [newLectureTitle, setNewLectureTitle] = useState("")
     const [newLectureDescription, setNewLectureDescription] = useState("")
 
-    const handleAddLecture = () => {
-        console.log("Adding Lecture")
-    }
 	const handleClose = () => {
 		setNewLectureDescription("");
 		setNewLectureTitle("");
 		setOpen(false);
 	};
+    const cookies = new Cookies();
+    const config = {
+        headers: { Authorization: `Bearer ${cookies.get('token')}` }
+    };
 
+    const handleAddLecture = async() => {
+		let body = {
+			title: newLectureTitle,
+			description: newLectureDescription
+		}
+		console.log({config})
+         await axios.post(`${backend_url}/courses/id/${id}/lecture`, body, config )
+        .then((res) => {
+           console.log(res) 
+        }).catch((err) => {
+            console.error(err)
+        })       
+    }
+	
 	return (
 		<div>
 			<Button onClick={handleClickOpen} color="secondary">
