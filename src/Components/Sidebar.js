@@ -8,9 +8,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -106,8 +107,9 @@ const changeDirectionIcon = () =>{
 const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 return (
-  <div>
- 
+    <div className={classes.root}>
+    <CssBaseline />
+
   <Drawer
   variant="permanent"
   classes={{
