@@ -13,18 +13,28 @@ import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 import InfoIcon from '@material-ui/icons/Info';
 import HelpIcon from '@material-ui/icons/Help';
+import history from './history';
+import HomeIcon from '@material-ui/icons/Home';
 //change icon by going to this website: https://material-ui.com/components/material-icons/
 //Then click one and copy the import code
 //Then paste the name of icon tag below <ListItemIcon> 
 //for ex. see first icon at <PersonIcon/>
 
+
+
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem button onClick={() => {history.push("/");}}>
+      <ListItemIcon>
+        <HomeIcon />
+      </ListItemIcon>
+      <ListItemText primary="Home" />
+    </ListItem>
+    <ListItem button onClick={() => {history.push("/profile");}}>
       <ListItemIcon>
         <PersonIcon />
       </ListItemIcon>
-      <ListItemText primary="Account" />
+      <ListItemText primary="My Profile" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -32,30 +42,14 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="My Feed" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Explore" />
-    </ListItem>
-    <ListItem button>
+
+    <ListItem button onClick={() => {history.push("/my-courses");}}>
       <ListItemIcon>
         <ImportContactsIcon />
       </ListItemIcon>
       <ListItemText primary="My Courses" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <EventIcon />
-      </ListItemIcon>
-      <ListItemText primary="Calendar" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <EmailIcon />
-      </ListItemIcon>
-      <ListItemText primary="Messages" />
-    </ListItem>
+
   </div>
 );
 

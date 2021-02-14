@@ -24,12 +24,18 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import axios from "axios";
 import clsx from 'clsx';
 import React, { useState } from "react";
+import { mainListItems, secondaryListItems } from '../listInfo';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import history from '../history'
+
+
 import Cookies from "universal-cookie";
 import { backend_url } from "../config";
-import { mainListItems, secondaryListItems } from '../listInfo';
 import Login from "../Login";
 import Logout from '../Logout';
 const drawerWidth = 200;
+//unused
 const topicOptions = {'1':'Math',
                       '2':'Music',
                       '3':'English',
@@ -127,7 +133,7 @@ const [proposalOpen, setproposalOpen] = useState(false);
   const [newProposalDescription, setNewProposalDescription] = useState("")
 
   const [Topics, setTopics] = React.useState('');
-  const [dropdownOption, setdropdownOption] = useState("");
+  const [dropdownOption, setdropdownOption] = useState("0");
   
 
   const handleTopicsChange = (event) => {
@@ -181,10 +187,15 @@ const auth = () => {
   const handleDropdownChange= (event) => {
       setdropdownOption(event.target.value)
       //do something with the option picked
+      linkToCommunity();
       console.log("You changed the dropdown to: " + dropdownOption);
 
       //set back to default
      // setdropdownOption(0);
+  }
+
+  const linkToCommunity = () =>{
+    history.push("/communities/"+dropdownOption);
   }
   
 
@@ -206,7 +217,11 @@ return (
           <InputLabel id="label"></InputLabel>
                         <Select
                             value={dropdownOption}
-                            onChange={handleDropdownChange}
+                            onChange={(e) => {
+                              
+                              if(e.target.value > 0) history.push("/communities/"+e.target.value);
+                              setdropdownOption(e.target.value);
+                            }}
                         >
                             <MenuItem value={0}>Communities</MenuItem>
                             <MenuItem value={1}>Math</MenuItem>
@@ -223,7 +238,7 @@ return (
 
 
           <div>
-            <Button onClick={handleProposalOpen} color="secondary">
+            <Button style={{margin:10}} variant="outlined" onClick={handleProposalOpen} >
               Add A Proposal
 			</Button>
             <Dialog open={proposalOpen} onClose={handleProposalClose}>
@@ -292,27 +307,20 @@ return (
 
       </div>
 
-          
-        <IconButton color = "inherit">
-        <ExitToAppIcon />
-        </IconButton>
-        <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        {auth()}
-      </Toolbar>
-    </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerOpenClose}>
+           
+   
+          {auth()}
+        </Toolbar>
+      </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerOpenClose}>
 
             {changeDirectionIcon()}
 

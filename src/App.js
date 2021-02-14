@@ -23,8 +23,6 @@ function App() {
                     <Route path="/" exact component={HomePage} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/my-courses" exact component={MyCourses} />
-                    <Route path="/login" exact component={Login} />
-                    <Route path="/logout" exact component={Logout} />
                     <Route path="/profile" exact component={Profile} />
                     <Route path="/proposal-form" exact component={ProposalForm} />
                     <Route path="/course/:courseID" exact component={CoursePage} />
