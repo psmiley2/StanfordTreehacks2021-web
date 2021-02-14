@@ -3,16 +3,16 @@ import React, { useState } from 'react'
 import Cookies from "universal-cookie"
 import { backend_url } from "./config"
 
-export default function Register() {
+export default function Login() {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
 
-    const registerUser = async() => {
+    const loginUser = async() => {
         let body = {
             email,
             password
         }
-        await axios.post(`${backend_url}/users/register`, body)
+        await axios.post(`${backend_url}/users/login`, body)
         .then((res) => {
             const cookies = new Cookies();
             cookies.set("token", res.data.token)
@@ -39,9 +39,9 @@ export default function Register() {
                 onChange={(e) => setpassword(e.target.value)}
             />
             <button
-                onClick={() => registerUser()}
+                onClick={() => loginUser()}
             >
-                Register
+                Login
             </button>
         </div>
     )

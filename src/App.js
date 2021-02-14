@@ -4,11 +4,13 @@ import { Route, Router, Switch } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import SideBar from './Components/Sidebar';
 import history from "./history";
+import Login from "./Login";
+import Logout from "./Logout";
+import Profile from "./Profile";
 import Register from "./Register";
-import MyCourses from "./Pages/MyCourses";
-function App() {
- 
+import MyCourses from './Pages/MyCourses'
 
+function App() {
   return (
       <Router history={history}>
         {/* <SideBar /> */}
@@ -17,6 +19,9 @@ function App() {
                   <Route path="/" exact component={HomePage} />
                   <Route path="/register" exact component={Register} />
                   <Route path="/my-courses" exact component={MyCourses} />
+                  <Route path="/login" exact component={Login} />
+                  <Route path="/logout" exact component={Logout} />
+                  <Route path="/profile" exact component={Profile} />
               </Switch>
           </Box>
       </Router>
