@@ -1,15 +1,18 @@
-import { Grid } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import React from 'react'
 import SimpleCard from "./SimpleCard"
+
 export default function CourseRow(props) {
     return (
-        <>
-        {props.title}
-        <Grid container direction="column" justify="center" alignItems="center">
-            <SimpleCard/>
-            <SimpleCard/> 
-            <SimpleCard/> 
-        </Grid>
-        </>
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="space-around" style={{width: "100%", height: "100%"}}>
+            <Box style={{width: 300,}} >
+                {props.title}
+            </Box>
+            <Box display="flex" flexDirection="row" justifyContent="space-around" style={{width: "100%"}}>
+                <SimpleCard/>
+                <SimpleCard/> 
+                <SimpleCard/> 
+            </Box>
+        </Box>
     )
 }

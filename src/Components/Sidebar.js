@@ -1,19 +1,21 @@
-import React from 'react';
-import List from '@material-ui/core/List';
-import { mainListItems, secondaryListItems } from '../listInfo';
-import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import { makeStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import React from 'react';
+import { mainListItems, secondaryListItems } from '../listInfo';
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    width: "25%"
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -106,8 +108,9 @@ const changeDirectionIcon = () =>{
 const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 return (
-  <div>
- 
+    <div className={classes.root}>
+    <CssBaseline />
+
   <Drawer
   variant="permanent"
   classes={{
