@@ -10,10 +10,7 @@
     "@testing-library/user-event": "^12.7.1",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
-<<<<<<< HEAD
-=======
     "dotenv": "^8.2.0",
->>>>>>> 4c4c9ce1ed4d6803d42ecb42dac079893439d5f8
     "history": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

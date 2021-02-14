@@ -94,7 +94,7 @@ export default function MyCourses() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-
+            {/* <HeaderBar /> */}
             <CssBaseline />
             <Sidebar />
            
