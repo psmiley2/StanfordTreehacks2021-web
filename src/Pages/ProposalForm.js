@@ -1,15 +1,12 @@
-import TextField from '@material-ui/core/TextField';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Button, Grid } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Grid } from '@material-ui/core';
-import Typography from '@material-ui/core/typography'
-import { SettingsOutlined, SettingsOverscanOutlined } from '@material-ui/icons';
-
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/typography';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -34,6 +31,15 @@ export default function ProposalForm() {
     const handleChange = (event) => {
         setTopics(event.target.value);
     };
+    
+    const handleSubmit = async () => {
+
+
+
+        setTopics("")
+        setTitle("")
+        setDescription("")
+    }
 
     return (
         <div>
@@ -82,6 +88,11 @@ export default function ProposalForm() {
                             value={Description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
+                        <Button
+                            onClick={() => handleSubmit()}
+                        >
+                            Submit
+                        </Button>
                     </form>
                 </Grid>
             </Grid>
