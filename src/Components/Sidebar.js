@@ -26,6 +26,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
+import Cookies from "universal-cookie";
+import Login from "../Login";
+import Logout from '../Logout';
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
@@ -146,9 +149,21 @@ const handleProposalClose = () => {
 
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const auth = () => {
+    const cookies = new Cookies();
+    let token = cookies.get("token");
+    if (token && token.length > 0) {
+      return <Logout />
+    }
+  
+    return (
+      <Login />
+    )
+  }
 
-  return (
-    <div>
+
+return (
+   <div> 
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
 
@@ -228,14 +243,16 @@ const handleProposalClose = () => {
 
         </div>
 
-            <IconButton color="inherit">
-              <ExitToAppIcon />
-            </IconButton>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+           
+          <IconButton color = "inherit">
+          <ExitToAppIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          {auth()}
         </Toolbar>
       </AppBar>
         <Drawer

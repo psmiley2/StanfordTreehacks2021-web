@@ -6,46 +6,46 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import React, { useState } from "react";
 
-export default function AddProposal() {
+export default function AddLecture() {
 	const [open, setOpen] = useState(false);
 	const handleClickOpen = () => {
         setOpen(true);
     }
-    const [newProposalTitle, setNewProposalTitle] = useState("")
-    const [newProposalDescription, setNewProposalDescription] = useState("")
+    const [newLectureTitle, setNewLectureTitle] = useState("")
+    const [newLectureDescription, setNewLectureDescription] = useState("")
 
-    const handleAddProposal = () => {
-        console.log("Adding Proposal")
+    const handleAddLecture = () => {
+        console.log("Adding Lecture")
     }
 	const handleClose = () => {
-		setNewProposalDescription("");
-		setNewProposalTitle("");
+		setNewLectureDescription("");
+		setNewLectureTitle("");
 		setOpen(false);
 	};
 
 	return (
 		<div>
 			<Button onClick={handleClickOpen} color="secondary">
-				Add A Proposal
+				Add A Lecture
 			</Button>
 			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>Add A Proposal</DialogTitle>
+				<DialogTitle>Add A Lecture</DialogTitle>
 				<DialogContent>
 					<TextField
-						value={newProposalTitle}
-						onChange={(e) => setNewProposalTitle(e.target.value)}
+						value={newLectureTitle}
+						onChange={(e) => setNewLectureTitle(e.target.value)}
 						margin="dense"
-						id="proposal-title"
-						label="New Proposal Title"
+						id="lecture-title"
+						label="New Lecture Title"
 						type="text"
 						fullWidth
 					/>
 					<TextField
-						value={newProposalDescription}
-						onChange={(e) => setNewProposalDescription(e.target.value)}
+						value={newLectureDescription}
+						onChange={(e) => setNewLectureDescription(e.target.value)}
 						margin="dense"
-						id="proposal-description"
-						label="New Proposal Description"
+						id="lecture-description"
+						label="New Lecture Description"
 						type="text"
 						fullWidth
 					/>
@@ -57,12 +57,12 @@ export default function AddProposal() {
 					</Button>
 					<Button
 						onClick={() => {
-							handleAddProposal();
+							handleAddLecture();
 							handleClose();
 						}}
 						color="secondary"
 					>
-						Add Proposal
+						Add Lecture
 					</Button>
 				</DialogActions>
 			</Dialog>

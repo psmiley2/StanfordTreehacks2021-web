@@ -8,9 +8,9 @@ import Login from "./Login";
 import Logout from "./Logout";
 import CoursePage from "./Pages/CoursePage";
 import MyCourses from './Pages/MyCourses';
+import ProposalForm from './Pages/ProposalForm';
 import Profile from "./Profile";
 import Register from "./Register";
-import ProposalForm from './Pages/ProposalForm';
 
 function App() {
   return (

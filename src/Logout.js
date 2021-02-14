@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core"
 import axios from "axios"
 import React from 'react'
 import Cookies from "universal-cookie"
@@ -20,11 +21,11 @@ export default function Logout() {
 
     return (
         <div>
-            <button
+            <Button color="secondary"
                 onClick={() => {logoutUser()}}
             >
                 Logout
-            </button>
+            </Button>
         </div>
     )
 }
