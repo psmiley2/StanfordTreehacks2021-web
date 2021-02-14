@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 import { backend_url } from "../config";
 import MyCourseCard from './MyCourseCard';
 export default function CoursePage(props) {
-    const [courses, setcourses] = useState(null)
+    const [courses, setcourses] = useState([])
     const cookies = new Cookies();
     const config = {
         headers: { Authorization: `Bearer ${cookies.get('token')}` }
