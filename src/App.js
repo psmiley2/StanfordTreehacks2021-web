@@ -6,6 +6,7 @@ import SideBar from './Components/Sidebar';
 import history from "./history";
 import Login from "./Login";
 import Logout from "./Logout";
+import CoursePage from "./Pages/CoursePage";
 import MyCourses from './Pages/MyCourses';
 import Profile from "./Profile";
 import Register from "./Register";
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/login" exact component={Login} />
                     <Route path="/logout" exact component={Logout} />
                     <Route path="/profile" exact component={Profile} />
+                    <Route path="/course/:courseID" exact component={CoursePage} />
                 </Switch>
             </Box>
         </Router>
