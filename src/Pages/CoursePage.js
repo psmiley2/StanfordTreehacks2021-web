@@ -29,8 +29,8 @@ export default function CoursePage(props) {
             <Box style={{width:"100%"}}>
                 Course Page
                 <Box display="flex" flexDirection="row" alignItems="space-around" style={{width: "100%"}}>
-                    <Lectures id={id} />
-                    <Forum id={id}/>
+                    <Lectures id={id} lectures={course.data.lectures} />
+                    <Forum id={id} threads={course.data.threads} />
                 </Box>
             </Box>
         )

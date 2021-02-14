@@ -3,19 +3,14 @@ import React from 'react'
 import AddLecture from './AddLecture'
 import Lecture from "./Lecture"
 
-export default function Lectures({id}) {
-    let votes = 5
-    let title = "Cool Lecture"
-    let description = "Description for cool lecture...... End of Description."
-    let author = "God Himself"
-
+export default function Lectures({id, lectures}) {
+ 
     return (
         <Paper style={{width: "45%", padding: "1%", margin: "1%"}}>
             Lectures
-            <Lecture upvotes={votes} title={title} description={description} author={author}/>
-            <Lecture upvotes={votes} title={title} description={description} author={author}/>
-            <Lecture upvotes={votes} title={title} description={description} author={author}/>
-            <Lecture upvotes={votes} title={title} description={description} author={author}/>
+            {lectures.map((lecture, index) => (
+                <Lecture courseID={id} lectureID={lecture._id} key={index} upvotes={lecture.votes} title={lecture.title} description={lecture.description} author={lecture.author}/>
+            ))}
             <AddLecture id={id}/>
         </Paper>
     )
